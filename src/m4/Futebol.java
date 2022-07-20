@@ -4,10 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import m4.futebol.Time;
+import m4.futebol.Jogador;
 
 public class Futebol {
 
+    public enum Tipo {
+        GOLEIRO, MEIA, ATACANTE, LATERAL, ZAGUEIRO, VOLANTE
+    }
+
     public static void main(String[] args) {
+
         List<Time> times = new ArrayList<>() {
             {
                 add(new Time(
@@ -46,18 +52,13 @@ public class Futebol {
                         }));
             }
         };
+
+        times.stream()
+                .forEach(time -> time.getJogadores()
+                        .stream()
+                        .filter(jogador -> jogador.getPosicao() == Tipo.MEIA)
+                        .forEach(resultado -> System.out.println(time.getNome() + " - " + resultado.getNome())));
+
     }
 
 }
-
-// Com base nesta estrutura de times e jogadores:
-
-// Construa tudo o que é necessário para estes código funcionar.
-
-// Utilizando stream e lambda se necessário, realize a obtenção dos jogadores
-// que são MEIA.
-
-// Liste no output os nomes dos jogadores obtidos e os seus respectivos times.
-
-// É proibido utilizar for, while, if e também qualquer operação hardcoded como
-// times.get(1)....
