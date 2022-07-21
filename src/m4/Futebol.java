@@ -53,6 +53,8 @@ public class Futebol {
             }
         };
 
+        System.out.println("\n Lista de meias\n");
+
         times.stream()
                 .forEach(time -> time.getJogadores()
                         .stream()
